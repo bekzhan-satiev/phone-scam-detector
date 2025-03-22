@@ -33,9 +33,10 @@ import kg.digitalshield.ui.component.TopRoundedColumn
 import kg.digitalshield.ui.theme.AppTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun RegisterScreen(modifier: Modifier = Modifier) {
     var login by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var passwordRepeat by remember { mutableStateOf("") }
 
     Column(modifier = modifier) {
         Column(
@@ -87,13 +88,23 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     .padding(top = 8.dp)
             )
 
+            OutlinedTextField(
+                value = passwordRepeat,
+                onValueChange = { passwordRepeat = it },
+                label = { Text(text = stringResource(id = R.string.password_repeat)) },
+                visualTransformation = PasswordVisualTransformation(mask = '*'),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp)
+            )
+
             Button(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth()
             ) {
-                Text(text = stringResource(id = R.string.to_login))
+                Text(text = stringResource(id = R.string.to_register))
             }
 
             Row(
@@ -102,9 +113,9 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                Text(text = stringResource(id = R.string.have_no_account))
+                Text(text = stringResource(id = R.string.have_account))
                 Text(
-                    text = stringResource(id = R.string.to_register),
+                    text = stringResource(id = R.string.to_login),
                     modifier = Modifier.clickable { println("clicked!") },
                     style = TextStyle(color = MaterialTheme.colorScheme.onPrimaryContainer)
                 )
@@ -114,9 +125,9 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 }
 
 @Preview(showSystemUi = true)
-@Composable()
-fun LoginScreenPreview() {
+@Composable
+fun RegisterScreenPreview() {
     AppTheme {
-        LoginScreen(modifier = Modifier.fillMaxSize())
+        RegisterScreen(modifier = Modifier.fillMaxSize())
     }
 }

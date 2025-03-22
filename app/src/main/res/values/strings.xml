@@ -4,9 +4,11 @@
     <string name="shield_image_description">Digital Shield Logo</string>
 
     <string name="digital_shield">Цифровой щит</string>
-    <string name="register">Зарегистрироваться</string>
+    <string name="to_register">Зарегистрироваться</string>
     <string name="phone_number">Номер телефона</string>
     <string name="password">Пароль</string>
-    <string name="login">Войти</string>
-    <string name="do_not_have_account">Нет аккаунта?</string>
+    <string name="password_repeat">Повторите пароль</string>
+    <string name="to_login">Войти</string>
+    <string name="have_no_account">Нет аккаунта?</string>
+    <string name="have_account">Уже есть аккаунт?</string>
 </resources>
