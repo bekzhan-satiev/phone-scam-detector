@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Phone Scam Detector</string>
+
+    <string name="shield_image_description">Digital Shield Logo</string>
+
+    <string name="digital_shield">Цифровой щит</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="do_not_have_account">Нет аккаунта?</string>
 </resources>
