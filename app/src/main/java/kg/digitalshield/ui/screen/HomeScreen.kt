@@ -71,9 +71,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
         CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
     )
-    val filteredCalls = calls.filter { it.phoneNumber.contains(searchQuery, ignoreCase = true) }
 
-    val titles = listOf("Номер", "Время")
+    val filteredCalls = calls.filter { it.phoneNumber.contains(searchQuery, ignoreCase = true) }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
