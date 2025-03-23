@@ -28,12 +28,15 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import kg.digitalshield.R
+import kg.digitalshield.router.Screen
 import kg.digitalshield.ui.component.TopRoundedColumn
 import kg.digitalshield.ui.theme.AppTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(modifier: Modifier = Modifier, navController: NavController) {
     var login by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -88,7 +91,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             )
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(Screen.Home.route) },
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth()
@@ -105,7 +108,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 Text(text = stringResource(id = R.string.have_no_account))
                 Text(
                     text = stringResource(id = R.string.to_register),
-                    modifier = Modifier.clickable { println("clicked!") },
+                    modifier = Modifier.clickable { navController.navigate(Screen.Register.route) },
                     style = TextStyle(color = MaterialTheme.colorScheme.onPrimaryContainer)
                 )
             }
@@ -117,6 +120,9 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 @Composable()
 fun LoginScreenPreview() {
     AppTheme {
-        LoginScreen(modifier = Modifier.fillMaxSize())
+        LoginScreen(
+            modifier = Modifier.fillMaxSize(),
+            rememberNavController()
+        )
     }
 }

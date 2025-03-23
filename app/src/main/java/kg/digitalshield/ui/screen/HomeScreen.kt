@@ -32,6 +32,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import kg.digitalshield.R
 import kg.digitalshield.dto.CallDTO
 import kg.digitalshield.dto.CallStatus
@@ -43,33 +45,53 @@ import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
     var phoneNumber = "+996 500 00 00 00"
 
     var searchQuery by remember { mutableStateOf("") }
     var searchActiveness by remember { mutableStateOf(false) }
 
     val calls = listOf(
-        CallDTO(phoneNumber = "+996509091625", date = Date()),
-        CallDTO(phoneNumber = "Амир", date = Date()),
-        CallDTO(phoneNumber = "Жоомарт", date = Date()),
-        CallDTO(phoneNumber = "Рысгул Жене", date = Date()),
-        CallDTO(phoneNumber = "Адиль Байке", date = Date(), callStatus = CallStatus.SUSPICIOUS),
-        CallDTO(phoneNumber = "Даниль Байке", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date(), callStatus = CallStatus.SUSPICIOUS),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date(), callStatus = CallStatus.BLOCKED),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date(), callStatus = CallStatus.BLOCKED),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
-        CallDTO(phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 1, phoneNumber = "+996509091625", date = Date()),
+        CallDTO(id = 2, phoneNumber = "Амир", date = Date()),
+        CallDTO(id = 3, phoneNumber = "Жоомарт", date = Date()),
+        CallDTO(id = 4, phoneNumber = "Рысгул Жене", date = Date()),
+        CallDTO(
+            id = 5,
+            phoneNumber = "Адиль Байке",
+            date = Date(),
+            callStatus = CallStatus.SUSPICIOUS
+        ),
+        CallDTO(id = 6, phoneNumber = "Даниль Байке", date = Date()),
+        CallDTO(id = 7, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(
+            id = 8,
+            phoneNumber = "Садыр Жапаров",
+            date = Date(),
+            callStatus = CallStatus.SUSPICIOUS
+        ),
+        CallDTO(
+            id = 9,
+            phoneNumber = "Садыр Жапаров",
+            date = Date(),
+            callStatus = CallStatus.BLOCKED
+        ),
+        CallDTO(
+            id = 10,
+            phoneNumber = "Садыр Жапаров",
+            date = Date(),
+            callStatus = CallStatus.BLOCKED
+        ),
+        CallDTO(id = 11, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 12, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 13, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 14, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 15, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 16, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 17, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 18, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 19, phoneNumber = "Садыр Жапаров", date = Date()),
+        CallDTO(id = 20, phoneNumber = "Садыр Жапаров", date = Date()),
     )
 
     val filteredCalls = calls.filter { it.phoneNumber.contains(searchQuery, ignoreCase = true) }
@@ -162,7 +184,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .background(MaterialTheme.colorScheme.onPrimary)
                 .fillMaxSize()
         ) {
-            CallsTable(calls = calls)
+            CallsTable(calls = calls, navController = navController)
         }
 
     }
@@ -172,7 +194,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 fun HomeScreenPreview() {
     AppTheme {
-        HomeScreen(modifier = Modifier.fillMaxSize())
+        HomeScreen(modifier = Modifier.fillMaxSize(), navController = rememberNavController())
     }
 }
 
