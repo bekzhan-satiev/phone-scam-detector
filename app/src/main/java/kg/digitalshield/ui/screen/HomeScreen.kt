@@ -46,8 +46,8 @@ import java.util.Date
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
-    var phoneNumber = "+996 500 00 00 00"
 
+    var phoneNumber = "+996 500 00 00 00"
     var searchQuery by remember { mutableStateOf("") }
     var searchActiveness by remember { mutableStateOf(false) }
 
@@ -110,8 +110,8 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                 alpha = 0.3f,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .padding(20.dp)
                     .fillMaxSize()
+                    .padding(16.dp)
             )
 
             Column(
@@ -122,7 +122,7 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = phoneNumber,
-                    fontSize = 26.sp,
+                    fontSize = 20.sp,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold
                 )
@@ -132,29 +132,22 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                         description = stringResource(id = R.string.safe),
                         color = Color.Black
                     )
+
                     LabelMarker(
                         description = stringResource(id = R.string.blocked),
                         color = Color.Red
                     )
+
                     LabelMarker(
                         description = stringResource(id = R.string.suspicious),
                         color = Color(0xFFE5A000)
-                    )
-                }
-
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center,
-                        text = stringResource(id = R.string.incoming_calls),
-                        fontSize = 26.sp
                     )
 
                     SearchBar(
                         query = searchQuery,
                         onQueryChange = { searchQuery = it },
                         onSearch = { searchActiveness = false },
-                        active = searchActiveness,
+                        active = false,
                         onActiveChange = { searchActiveness = it },
                         placeholder = { Text(text = stringResource(id = R.string.enter_phone_number)) },
                         trailingIcon = {
@@ -165,15 +158,8 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                             )
                         },
                     ) {
-                        filteredCalls.forEach { item ->
-                            Text(
-                                text = item.phoneNumber,
-                                fontSize = 15.sp
-                            )
-                        }
                     }
                 }
-
             }
 
         }
@@ -184,7 +170,10 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
                 .background(MaterialTheme.colorScheme.onPrimary)
                 .fillMaxSize()
         ) {
-            CallsTable(calls = calls, navController = navController)
+            CallsTable(
+                calls = if (searchQuery.isNotEmpty()) filteredCalls else calls,
+                navController = navController
+            )
         }
 
     }

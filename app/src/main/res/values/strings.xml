@@ -33,4 +33,9 @@
     <string name="suspicious_call">Подозрительный звонок</string>
     <string name="suspicious_phrases">Подозрительные фразы:</string>
 
+    <!--  Bottom navbar  -->
+    <string name="search">Поиск</string>
+    <string name="home">Главная</string>
+    <string name="stat">Статистика</string>
+
 </resources>

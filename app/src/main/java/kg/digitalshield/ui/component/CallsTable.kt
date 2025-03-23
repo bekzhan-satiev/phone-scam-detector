@@ -27,6 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import kg.digitalshield.R
 import kg.digitalshield.dto.CallDTO
 import kg.digitalshield.dto.CallStatus
+import kg.digitalshield.navigation.Screen
 import kg.digitalshield.ui.theme.AppTheme
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -69,8 +70,12 @@ fun CallsTable(
             items(filteredCalls) { call ->
                 Row(horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.clickable {
-                        val id = call.id
-                        navController.navigate("call/$id")
+                        navController.navigate(
+                            Screen.CallDetailed.route.replace(
+                                "{id}",
+                                call.id.toString()
+                            )
+                        )
                     }) {
                     TableCell(
                         text = call.phoneNumber,

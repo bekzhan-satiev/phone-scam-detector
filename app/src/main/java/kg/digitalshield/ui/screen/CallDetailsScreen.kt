@@ -112,7 +112,7 @@ fun CallDetailsScreen(modifier: Modifier = Modifier, callId: Long) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text = stringResource(id = R.string.number))
@@ -121,7 +121,7 @@ fun CallDetailsScreen(modifier: Modifier = Modifier, callId: Long) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text = stringResource(id = R.string.duration))
@@ -130,7 +130,7 @@ fun CallDetailsScreen(modifier: Modifier = Modifier, callId: Long) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(text = stringResource(id = R.string.call_date))
