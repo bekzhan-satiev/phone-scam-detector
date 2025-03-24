@@ -28,7 +28,18 @@ import kg.digitalshield.ui.screen.SearchScreen
 import kg.digitalshield.ui.screen.StatisticScreen
 import kg.digitalshield.ui.theme.AppTheme
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import android.provider.Settings
+
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

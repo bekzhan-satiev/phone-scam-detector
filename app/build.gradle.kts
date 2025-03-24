@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.chaquo.python")
 }
 
 android {
@@ -18,7 +19,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        ndk {
+            abiFilters += listOf(
+                "armeabi-v7a", "x86", "x86_64"
+            )
+        }
     }
+
+
 
     buildTypes {
         release {
@@ -61,6 +69,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.navigation.compose)
     implementation(libs.compose.charts)
+//    implementation(libs.chaquo)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
